@@ -1,0 +1,5 @@
+.selected,
+.selected:hover {
+  color: black;
+  background-color: coral;
+}

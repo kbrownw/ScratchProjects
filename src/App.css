@@ -1,0 +1,43 @@
+@import "./styles/resets.css";
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+#stylesList {
+  display: block;
+  overflow: hidden;
+  transition: height 0.3s ease;
+}
+
+#stylesList > ul {
+  display: grid;
+  width: fit-content;
+  justify-content: center;
+  gap: 0.5em;
+  background-color: rgb(71, 71, 138);
+  border-radius: 2em;
+  padding: 1em;
+  margin: 0 auto 2em auto;
+}
+
+#stylesList li {
+  margin: 0 2em;
+}
+
+#stylesList:not(.active) {
+  display: none;
+}
+
+#customGridFormWrapper {
+  overflow: hidden;
+}
+
+#customGridFormWrapper:not(.active) {
+  display: none;
+}
+
+.transition-height {
+  transition: height 0.3s ease;
+}

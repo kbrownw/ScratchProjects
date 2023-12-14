@@ -1,0 +1,12 @@
+.plusButton {
+  display: inline-block;
+  color: rgb(71, 71, 138);
+  background: transparent;
+  font-size: 4em;
+  padding: 0 0 8px 0;
+  font-weight: bold;
+}
+
+.rotate {
+  transform: rotate(45deg);
+}

@@ -1,0 +1,20 @@
+#customGridForm {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5em 1em;
+  color: coral;
+  font-weight: bold;
+  justify-self: center;
+  align-items: center;
+  padding-bottom: 2em;
+}
+
+#customGridForm > input,
+#customGridForm > select {
+  min-height: 30px;
+  font-size: medium;
+}
+
+#customGridForm > select {
+  padding: auto 0;
+}

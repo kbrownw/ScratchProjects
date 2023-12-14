@@ -1,0 +1,15 @@
+.gridButton {
+  padding: 1.5em;
+  background-color: darkgray;
+  font-size: large;
+  font-weight: bold;
+  border-radius: 0.5em;
+  transition: ease-in-out 300ms;
+  width: 100%;
+}
+
+.gridButton:hover {
+  color: white;
+  background-color: rgb(71, 71, 138);
+  transition: ease-in 0.3ms;
+}

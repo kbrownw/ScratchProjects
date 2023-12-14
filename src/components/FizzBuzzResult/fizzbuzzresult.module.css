@@ -1,0 +1,10 @@
+.FB-Result > ul {
+  margin-top: 0;
+  padding: 10px 0;
+  list-style-type: none;
+  padding-inline-start: 0;
+  border: 2px solid rgb(81, 81, 146);
+  border-radius: 2em;
+  width: 100%;
+  text-align: center;
+}

@@ -1,0 +1,35 @@
+.gridBtns {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding-bottom: 2em;
+  gap: 1.5em;
+}
+
+.largeGridBtns {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.gridListItem {
+  color: white;
+  font-weight: bold;
+  font-size: 1.25em;
+}
+
+.gridList {
+  display: grid;
+  justify-items: flex-start;
+  width: fit-content;
+  margin: 0 auto 1em auto;
+  gap: 5px 0;
+  background-color: rgb(71, 71, 138);
+  border-radius: 1em;
+  padding: 1em;
+}
+
+#gridPage .selected,
+#gridPage .selected:hover {
+  color: black;
+  background-color: coral;
+}

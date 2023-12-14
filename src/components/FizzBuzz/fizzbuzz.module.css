@@ -1,0 +1,6 @@
+.gridDiv {
+  display: grid;
+  gap: 1.5em;
+  justify-items: center;
+  padding: 20px 15px;
+}

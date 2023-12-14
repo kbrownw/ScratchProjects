@@ -1,0 +1,51 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(32, 32, 32);
+  margin: 0;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 64px;
+}
+
+h2 {
+  font-size: 50px;
+}
+
+h3 {
+  font-size: 40px;
+}
+
+h4 {
+  font-size: large;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+button {
+  border: none;
+}
+
+button:hover {
+  cursor: pointer;
+}

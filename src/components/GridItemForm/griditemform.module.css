@@ -1,0 +1,18 @@
+#gridItemForm {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5em 1em;
+  color: coral;
+  font-weight: bold;
+  padding-bottom: 2em;
+}
+
+#gridItemForm > input,
+#gridItemForm > select {
+  min-height: 30px;
+  font-size: medium;
+}
+
+#gridItemForm > select {
+  padding: auto 0;
+}

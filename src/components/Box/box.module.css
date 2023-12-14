@@ -1,0 +1,8 @@
+.gridItem {
+  color: white;
+  background-color: rgb(71, 71, 138);
+  border: 5px solid rgb(64, 33, 99);
+  border-radius: 2em;
+  text-align: center;
+  padding: 1em;
+}
