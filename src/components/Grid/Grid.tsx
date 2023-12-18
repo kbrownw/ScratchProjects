@@ -1,6 +1,10 @@
 import { useState } from "react";
 import styles from "./grid.module.css";
-import { gridStyles, gridNames } from "../../utils/gridStyles/gridStyles";
+import {
+  gridStyles,
+  gridNames,
+  GridStyles,
+} from "../../utils/gridStyles/gridStyles";
 import { GridButton } from "../GridButton/GridButton";
 import { DropdownWithTitle } from "../DropdownWIthTitle/DropdownWithTitle";
 import { CustomGridSetup } from "../CustomGridSetup/CustomGridSetup";
@@ -10,11 +14,11 @@ import { initialGridItems } from "../../utils/gridStyles/gridStyles";
 import { useImmer } from "use-immer";
 
 export const Grid = () => {
-  const [selectedGrid, setSelectedGrid] = useState(gridNames.grid1);
-  const [defaultGrids, setDefaultGrids] = useState(gridStyles);
+  const [selectedGrid, setSelectedGrid] = useState<string>(gridNames.grid1);
+  const [defaultGrids, setDefaultGrids] = useState<GridStyles>(gridStyles);
   const [items, setItems] = useImmer(initialGridItems);
 
-  const handleClick = (event: GridButton) => {
+  const handleClick = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedGrid(event.target.value);
   };
 

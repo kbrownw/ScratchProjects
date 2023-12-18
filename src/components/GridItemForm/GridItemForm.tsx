@@ -1,24 +1,35 @@
-import { gridItemsDefault } from "../../utils/gridStyles/gridStyles";
+import {
+  gridItemsDefault,
+  InitialGridItem,
+} from "../../utils/gridStyles/gridStyles";
 import { useEffect, useState } from "react";
 import styles from "./griditemform.module.css";
 import { GridButton } from "../GridButton/GridButton";
 import { initialGridItems } from "../../utils/gridStyles/gridStyles";
+import { Updater } from "use-immer";
 
-export const GridItemForm = ({ items, setItems }) => {
-  const [gridItemSelect, setGridItemSelect] = useState("item0");
-  const [itemColStart, setItemColStart] = useState("");
-  const [itemColEnd, setItemColEnd] = useState("");
-  const [itemRowStart, setItemRowStart] = useState("");
-  const [itemRowEnd, setItemRowEnd] = useState("");
-  const [itemJustifySelf, setItemJustifySelf] = useState("stretch");
-  const [itemAlignSelf, setItemAlignSelf] = useState("stretch");
-  const [itemContent, setItemContent] = useState(
-    initialGridItems.item0.content
+interface Props {
+  items: InitialGridItem[];
+  setItems: Updater<InitialGridItem[]>;
+}
+
+export const GridItemForm = ({ items, setItems }: Props) => {
+  const [gridItemSelect, setGridItemSelect] = useState<number>(0);
+  const [itemColStart, setItemColStart] = useState<string>("");
+  const [itemColEnd, setItemColEnd] = useState<string>("");
+  const [itemRowStart, setItemRowStart] = useState<string>("");
+  const [itemRowEnd, setItemRowEnd] = useState<string>("");
+  const [itemJustifySelf, setItemJustifySelf] = useState<string>("stretch");
+  const [itemAlignSelf, setItemAlignSelf] = useState<string>("stretch");
+  const [itemContent, setItemContent] = useState<string>(
+    initialGridItems[0].content
   );
-  const [toggleRefresh, setToggleRefresh] = useState(false);
+  const [toggleRefresh, setToggleRefresh] = useState<boolean>(false);
 
-  const handleItemSelect = (event) => {
-    const item = event.target.value;
+  const handleItemSelect = (
+    event: React.ChangeEvent<HTMLSelectElement> | null
+  ) => {
+    const item = event === null ? 0 : Number(event.target.value);
     setGridItemSelect(item);
     if (items[item].style.gridColumnStart) {
       setItemColStart(items[item].style.gridColumnStart);
@@ -91,21 +102,16 @@ export const GridItemForm = ({ items, setItems }) => {
     setToggleRefresh(!toggleRefresh);
   };
 
-  const itemsSelect = Object.keys(items).map((item, index) => {
+  const itemsSelect = items.map((item, index) => {
     return (
-      <option key={item} value={item}>
+      <option key={item.id} value={index}>
         Item {index + 1}
       </option>
     );
   });
 
   useEffect(() => {
-    const e = {
-      target: {
-        value: "item0",
-      },
-    };
-    handleItemSelect(e);
+    handleItemSelect(null);
   }, []);
 
   useEffect(() => {
@@ -219,7 +225,7 @@ export const GridItemForm = ({ items, setItems }) => {
       />
       <GridButton
         text="Submit"
-        handleClick={(e) => {
+        handleClick={(e: React.ChangeEvent<HTMLInputElement>) => {
           e.preventDefault();
           handleSubmit(
             gridItemSelect,
@@ -235,7 +241,7 @@ export const GridItemForm = ({ items, setItems }) => {
       />
       <GridButton
         text="Reset Item"
-        handleClick={(e) => {
+        handleClick={(e: React.ChangeEvent<HTMLInputElement>) => {
           e.preventDefault();
           handleReset();
         }}
@@ -243,7 +249,7 @@ export const GridItemForm = ({ items, setItems }) => {
       <div style={{ gridColumn: "1 / 3" }}>
         <GridButton
           text="Reset All Items"
-          handleClick={(e) => {
+          handleClick={(e: React.ChangeEvent<HTMLInputElement>) => {
             e.preventDefault();
             setItems(initialGridItems);
             handleReset();

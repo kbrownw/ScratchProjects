@@ -1,23 +1,30 @@
 import { useSpring, animated } from "@react-spring/web";
 import { useState, useRef, useEffect } from "react";
-import { gridNames } from "../../utils/gridStyles/gridStyles";
+import { gridNames, GridStyles } from "../../utils/gridStyles/gridStyles";
 import { getHeight } from "../../utils/functions/getHeight";
 import { GridButton } from "../GridButton/GridButton";
 import { CustomGridForm } from "../CustomGridForm/CustomGridForm";
 import styles from "./customgridsetup.module.css";
+
+interface Props {
+  selectedGrid: string;
+  setSelectedGrid: React.Dispatch<React.SetStateAction<string>>;
+  defaultGrids: GridStyles;
+  setDefaultGrids: React.Dispatch<React.SetStateAction<GridStyles>>;
+}
 
 export function CustomGridSetup({
   selectedGrid,
   setSelectedGrid,
   defaultGrids,
   setDefaultGrids,
-}) {
-  const [toggle, setToggle] = useState(false);
-  const element = useRef(null);
+}: Props) {
+  const [toggle, setToggle] = useState<boolean>(false);
+  const element = useRef<HTMLDivElement>(null!);
   const [springs, api] = useSpring(() => ({
     from: { height: 0 },
   }));
-  const handleClick = (event) => {
+  const handleClick = (event: React.ChangeEvent<HTMLInputElement>) => {
     const height = getHeight(element.current);
     toggle
       ? api.start({

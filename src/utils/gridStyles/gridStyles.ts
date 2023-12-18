@@ -1,5 +1,5 @@
-interface GridStyle {
-  display: "grid" | "inline-grid";
+export interface GridStyle {
+  display?: "grid" | "inline-grid";
   gridTemplateColumns?: string;
   gridTemplateRows?: string;
   gap?: string;
@@ -48,12 +48,12 @@ const customGridStyles: GridStyle = {
   alignContent: "",
 };
 
-interface GridStyles {
-  grid1: object;
-  grid2: object;
-  grid3: object;
-  grid4: object;
-  customGridStyles: object;
+export interface GridStyles {
+  grid1: GridStyle;
+  grid2: GridStyle;
+  grid3: GridStyle;
+  grid4: GridStyle;
+  customGridStyles: GridStyle;
 }
 
 export const gridStyles: GridStyles = {
@@ -64,7 +64,15 @@ export const gridStyles: GridStyles = {
   customGridStyles: customGridStyles,
 };
 
-export const gridNames = {
+export interface GridNames {
+  grid1: "grid1";
+  grid2: "grid2";
+  grid3: "grid3";
+  grid4: "grid4";
+  custom: "customGridStyles";
+}
+
+export const gridNames: GridNames = {
   grid1: "grid1",
   grid2: "grid2",
   grid3: "grid3",
@@ -72,40 +80,16 @@ export const gridNames = {
   custom: "customGridStyles",
 };
 
-export const initialGridItems = {
-  item0: {
-    content: "Lorem ipsum",
-    id: 0,
-    style: {},
-  },
-  item1: {
-    content: "Nascetur ridiculus",
-    id: 1,
-    style: {},
-  },
-  item2: {
-    content: "Enim neque volutpat ac tincidunt vitae",
-    id: 2,
-    style: {},
-  },
-  item3: {
-    content: "Massa",
-    id: 3,
-    style: {},
-  },
-  item4: {
-    content: "In nisl nisi scelerisque eu",
-    id: 4,
-    style: {},
-  },
-  item5: {
-    content: "Urna id volutpat lacus laoreet non curabitur gravida",
-    id: 5,
-    style: {},
-  },
-};
+export interface GridItemsDefault {
+  gridColumnStart: string;
+  gridColumnEnd: string;
+  gridRowStart: string;
+  gridRowEnd: string;
+  justifySelf: "start" | "end" | "center" | "stretch";
+  alignSelf: "start" | "end" | "center" | "stretch";
+}
 
-export const gridItemsDefault = {
+export const gridItemsDefault: GridItemsDefault = {
   gridColumnStart: "",
   gridColumnEnd: "",
   gridRowStart: "",
@@ -113,3 +97,53 @@ export const gridItemsDefault = {
   justifySelf: "stretch",
   alignSelf: "stretch",
 };
+export interface InitialGridItem {
+  content: string;
+  id: number;
+  style: GridItemsDefault;
+}
+
+const item0: InitialGridItem = {
+  content: "Lorem ipsum",
+  id: 0,
+  style: gridItemsDefault,
+};
+
+const item1: InitialGridItem = {
+  content: "Nascetur ridiculus",
+  id: 1,
+  style: gridItemsDefault,
+};
+
+const item2: InitialGridItem = {
+  content: "Enim neque volutpat ac tincidunt vitae",
+  id: 2,
+  style: gridItemsDefault,
+};
+
+const item3: InitialGridItem = {
+  content: "Massa",
+  id: 3,
+  style: gridItemsDefault,
+};
+
+const item4: InitialGridItem = {
+  content: "In nisl nisi scelerisque eu",
+  id: 4,
+  style: gridItemsDefault,
+};
+
+const item5: InitialGridItem = {
+  content: "Urna id volutpat lacus laoreet non curabitur gravida",
+  id: 5,
+  style: gridItemsDefault,
+};
+
+export const initialGridItems: InitialGridItem[] = [
+  item0,
+  item1,
+  item2,
+  item3,
+  item4,
+  item5,
+];

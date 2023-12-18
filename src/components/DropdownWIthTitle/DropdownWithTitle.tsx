@@ -1,7 +1,18 @@
 import { useSpring, animated } from "@react-spring/web";
-import { useEffect, useRef, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import { PlusButton } from "../PlusButton/PlusButton";
 import { getHeight } from "../../utils/functions/getHeight";
+
+interface Props {
+  style?: object;
+  title: string;
+  titleStyle?: object;
+  titleClass?: string;
+  listStyle?: object;
+  listClass?: string;
+  object?: ReactNode;
+  watcher?: unknown;
+}
 
 export function DropdownWithTitle({
   style,
@@ -12,13 +23,13 @@ export function DropdownWithTitle({
   listClass,
   object,
   watcher,
-}) {
+}: Props) {
   const [springs, api] = useSpring(() => ({
     from: { height: 0 },
   }));
-  const element = useRef(null);
-  const height = useRef(0);
-  const [toggle, setToggle] = useState(false);
+  const element = useRef<HTMLDivElement>(null!);
+  const height = useRef<number>(0);
+  const [toggle, setToggle] = useState<boolean>(false);
   const handleClick = () => {
     height.current = getHeight(element.current);
     toggle

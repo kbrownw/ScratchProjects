@@ -2,9 +2,9 @@ import styles from "./gridbutton.module.css";
 
 interface props {
   text: string;
-  value: string;
+  value?: string;
   handleClick: any;
-  className: object;
+  className?: string | null;
 }
 
 export const GridButton = (props: props) => {
