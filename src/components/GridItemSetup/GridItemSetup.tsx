@@ -1,16 +1,23 @@
+import { InitialGridItem } from "../../utils/gridStyles/gridStyles";
 import { useSpring, animated } from "@react-spring/web";
 import { getHeight } from "../../utils/functions/getHeight";
 import { useState, useRef } from "react";
 import { GridButton } from "../GridButton/GridButton";
 import { GridItemForm } from "../GridItemForm/GridItemForm";
+import { Updater } from "use-immer";
 
-export const GridItemSetup = ({ items, setItems }) => {
+interface Props {
+  items: InitialGridItem[];
+  setItems: Updater<InitialGridItem[]>;
+}
+
+export const GridItemSetup = ({ items, setItems }: Props) => {
   const [toggle, setToggle] = useState(false);
-  const element = useRef(null);
+  const element = useRef<HTMLDivElement>(null!);
   const [springs, api] = useSpring(() => ({
     from: { height: 0 },
   }));
-  const handleClick = (event) => {
+  const handleClick = () => {
     const height = getHeight(element.current);
     toggle
       ? api.start({

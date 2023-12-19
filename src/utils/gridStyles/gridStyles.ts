@@ -1,5 +1,5 @@
 export interface GridStyle {
-  display?: "grid" | "inline-grid";
+  display?: "grid" | "inline-grid" | string;
   gridTemplateColumns?: string;
   gridTemplateRows?: string;
   gap?: string;
@@ -48,12 +48,32 @@ const customGridStyles: GridStyle = {
   alignContent: "",
 };
 
+export type GridName = string;
+
+const grid1Name: GridName = "grid1";
+const grid2Name: GridName = "grid2";
+const grid3Name: GridName = "grid3";
+const grid4Name: GridName = "grid4";
+const customName: GridName = "customGridStyles";
+
+export interface GridNames {
+  grid1: string;
+  grid2: string;
+  grid3: string;
+  grid4: string;
+  custom: string;
+}
+
+export const gridNames: Readonly<GridNames> = {
+  grid1: grid1Name,
+  grid2: grid2Name,
+  grid3: grid3Name,
+  grid4: grid4Name,
+  custom: customName,
+};
+
 export interface GridStyles {
-  grid1: GridStyle;
-  grid2: GridStyle;
-  grid3: GridStyle;
-  grid4: GridStyle;
-  customGridStyles: GridStyle;
+  [key: string]: GridStyle;
 }
 
 export const gridStyles: GridStyles = {
@@ -62,22 +82,6 @@ export const gridStyles: GridStyles = {
   grid3: grid3,
   grid4: grid4,
   customGridStyles: customGridStyles,
-};
-
-export interface GridNames {
-  grid1: "grid1";
-  grid2: "grid2";
-  grid3: "grid3";
-  grid4: "grid4";
-  custom: "customGridStyles";
-}
-
-export const gridNames: GridNames = {
-  grid1: "grid1",
-  grid2: "grid2",
-  grid3: "grid3",
-  grid4: "grid4",
-  custom: "customGridStyles",
 };
 
 export interface GridItemsDefault {

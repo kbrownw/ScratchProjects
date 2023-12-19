@@ -1,8 +1,12 @@
 import styles from "./plusbutton.module.css";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useSpring, animated } from "@react-spring/web";
 
-export function PlusButton({ clickEvent }) {
+type Props = {
+  clickEvent: (event?: unknown) => void;
+};
+
+export function PlusButton({ clickEvent }: Props) {
   const [springs, api] = useSpring(() => ({
     from: { transform: "rotate(0deg)" },
   }));
@@ -29,7 +33,7 @@ export function PlusButton({ clickEvent }) {
     setRotate(!rotate);
   };
 
-  const handleClick = (event) => {
+  const handleClick = (event: React.FormEvent) => {
     event.preventDefault();
     handleRotate();
     clickEvent ? clickEvent(event) : null;

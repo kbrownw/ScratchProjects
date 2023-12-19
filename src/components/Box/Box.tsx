@@ -2,7 +2,7 @@ import styles from "./box.module.css";
 
 interface Box {
   content: string;
-  style: object;
+  style: { [key: string]: any };
 }
 
 export const Box = ({ content, style }: Box) => {

@@ -1,4 +1,5 @@
 import {
+  GridItemsDefault,
   gridItemsDefault,
   InitialGridItem,
 } from "../../utils/gridStyles/gridStyles";
@@ -13,14 +14,27 @@ interface Props {
   setItems: Updater<InitialGridItem[]>;
 }
 
+type handleSubmit = (
+  gridItemSelect: number,
+  itemColStart: string,
+  itemColEnd: string,
+  itemRowStart: string,
+  itemRowEnd: string,
+  itemJustifySelf: GridItemsDefault["justifySelf"],
+  itemAlignSelf: GridItemsDefault["alignSelf"],
+  itemContent: string
+) => void;
+
 export const GridItemForm = ({ items, setItems }: Props) => {
   const [gridItemSelect, setGridItemSelect] = useState<number>(0);
   const [itemColStart, setItemColStart] = useState<string>("");
   const [itemColEnd, setItemColEnd] = useState<string>("");
   const [itemRowStart, setItemRowStart] = useState<string>("");
   const [itemRowEnd, setItemRowEnd] = useState<string>("");
-  const [itemJustifySelf, setItemJustifySelf] = useState<string>("stretch");
-  const [itemAlignSelf, setItemAlignSelf] = useState<string>("stretch");
+  const [itemJustifySelf, setItemJustifySelf] =
+    useState<GridItemsDefault["justifySelf"]>("stretch");
+  const [itemAlignSelf, setItemAlignSelf] =
+    useState<GridItemsDefault["alignSelf"]>("stretch");
   const [itemContent, setItemContent] = useState<string>(
     initialGridItems[0].content
   );
@@ -68,7 +82,7 @@ export const GridItemForm = ({ items, setItems }: Props) => {
     }
   };
 
-  const handleSubmit = (
+  const handleSubmit: handleSubmit = (
     gridItemSelect,
     itemColStart,
     itemColEnd,
@@ -188,7 +202,7 @@ export const GridItemForm = ({ items, setItems }: Props) => {
         id="itemJustifySelf"
         name="itemJustifySelf"
         onChange={(e) => {
-          setItemJustifySelf(e.target.value);
+          setItemJustifySelf(e.target.value as GridItemsDefault["justifySelf"]);
         }}
         value={itemJustifySelf}
       >
@@ -203,7 +217,7 @@ export const GridItemForm = ({ items, setItems }: Props) => {
         id="itemAlignSelf"
         name="itemAlignSelf"
         onChange={(e) => {
-          setItemAlignSelf(e.target.value);
+          setItemAlignSelf(e.target.value as GridItemsDefault["alignSelf"]);
         }}
         value={itemAlignSelf}
       >

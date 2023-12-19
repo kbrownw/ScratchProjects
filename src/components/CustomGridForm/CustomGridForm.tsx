@@ -1,26 +1,39 @@
 import { useState } from "react";
+import { GridStyles, GridStyle } from "../../utils/gridStyles/gridStyles";
 import styles from "./customgridform.module.css";
 import { GridButton } from "../GridButton/GridButton";
 
-export const CustomGridForm = ({ defaultGrids, setDefaultGrids }) => {
-  const [gridDisplay, setGridDisplay] = useState("grid");
-  const [gridCols, setGridCols] = useState("");
-  const [gridRows, setGridRows] = useState("");
-  const [gridGap, setGridGap] = useState("");
-  const [gridJustItems, setGridJustItems] = useState("");
-  const [gridAlignItems, setGridAlignItems] = useState("");
-  const [gridJustContent, setGridJustContent] = useState("");
-  const [gridAlignContent, setGridAlignContent] = useState("");
+interface Props {
+  selectedGrid?: string;
+  setSelectedGrid?: React.Dispatch<React.SetStateAction<string>>;
+  defaultGrids: GridStyles;
+  setDefaultGrids: React.Dispatch<React.SetStateAction<GridStyles>>;
+}
+
+export const CustomGridForm = ({ defaultGrids, setDefaultGrids }: Props) => {
+  const [gridDisplay, setGridDisplay] = useState<GridStyle["display"]>("grid");
+  const [gridCols, setGridCols] =
+    useState<GridStyle["gridTemplateColumns"]>("");
+  const [gridRows, setGridRows] = useState<GridStyle["gridTemplateRows"]>("");
+  const [gridGap, setGridGap] = useState<GridStyle["gap"]>("");
+  const [gridJustItems, setGridJustItems] =
+    useState<GridStyle["justifyItems"]>("");
+  const [gridAlignItems, setGridAlignItems] =
+    useState<GridStyle["alignItems"]>("");
+  const [gridJustContent, setGridJustContent] =
+    useState<GridStyle["justifyContent"]>("");
+  const [gridAlignContent, setGridAlignContent] =
+    useState<GridStyle["alignContent"]>("");
 
   const handleSubmit = (
-    display: string,
-    cols: string,
-    rows: string,
-    gap: string,
-    justItems: string,
-    alignItems: string,
-    justContent: string,
-    alignContent: string
+    display: GridStyle["display"],
+    cols: GridStyle["gridTemplateColumns"],
+    rows: GridStyle["gridTemplateRows"],
+    gap: GridStyle["gap"],
+    justItems: GridStyle["justifyItems"],
+    alignItems: GridStyle["alignItems"],
+    justContent: GridStyle["justifyContent"],
+    alignContent: GridStyle["alignContent"]
   ) => {
     setDefaultGrids({
       ...defaultGrids,
@@ -156,7 +169,7 @@ export const CustomGridForm = ({ defaultGrids, setDefaultGrids }) => {
       </select>
       <GridButton
         text="Submit"
-        handleClick={(e) => {
+        handleClick={(e: React.FormEvent) => {
           e.preventDefault();
           handleSubmit(
             gridDisplay,
@@ -172,7 +185,7 @@ export const CustomGridForm = ({ defaultGrids, setDefaultGrids }) => {
       />
       <GridButton
         text="Reset Values"
-        handleClick={(e) => {
+        handleClick={(e: React.FormEvent) => {
           e.preventDefault();
           setGridDisplay("grid");
           setGridCols("");
