@@ -32,9 +32,9 @@ export const GridItemForm = ({ items, setItems }: Props) => {
   const [itemRowStart, setItemRowStart] = useState<string>("");
   const [itemRowEnd, setItemRowEnd] = useState<string>("");
   const [itemJustifySelf, setItemJustifySelf] =
-    useState<GridItemsDefault["justifySelf"]>("stretch");
+    useState<GridItemsDefault["justifySelf"]>("");
   const [itemAlignSelf, setItemAlignSelf] =
-    useState<GridItemsDefault["alignSelf"]>("stretch");
+    useState<GridItemsDefault["alignSelf"]>("");
   const [itemContent, setItemContent] = useState<string>(
     initialGridItems[0].content
   );
@@ -110,8 +110,8 @@ export const GridItemForm = ({ items, setItems }: Props) => {
     setItemColEnd("");
     setItemRowStart("");
     setItemRowEnd("");
-    setItemJustifySelf("stretch");
-    setItemAlignSelf("stretch");
+    setItemJustifySelf("");
+    setItemAlignSelf("");
     setItemContent(initialGridItems[gridItemSelect].content);
     setToggleRefresh(!toggleRefresh);
   };
@@ -157,6 +157,7 @@ export const GridItemForm = ({ items, setItems }: Props) => {
       <input
         id="itemColStart"
         name="itemColStart"
+        placeholder="Column number: 1, 2, etc."
         type="text"
         onChange={(e) => {
           setItemColStart(e.target.value);
@@ -168,6 +169,7 @@ export const GridItemForm = ({ items, setItems }: Props) => {
       <input
         id="itemColEnd"
         name="itemColEnd"
+        placeholder="Column number or span: 1, 2 or span 2, etc."
         type="text"
         onChange={(e) => {
           setItemColEnd(e.target.value);
@@ -179,6 +181,7 @@ export const GridItemForm = ({ items, setItems }: Props) => {
       <input
         id="itemRowStart"
         name="itemRowStart"
+        placeholder="Row number: 1, 2, etc."
         type="text"
         onChange={(e) => {
           setItemRowStart(e.target.value);
@@ -190,6 +193,7 @@ export const GridItemForm = ({ items, setItems }: Props) => {
       <input
         id="itemRowEnd"
         name="itemRowEnd"
+        placeholder="Row number or span: 1, 2, or span 2, etc."
         type="text"
         onChange={(e) => {
           setItemRowEnd(e.target.value);
@@ -206,10 +210,11 @@ export const GridItemForm = ({ items, setItems }: Props) => {
         }}
         value={itemJustifySelf}
       >
+        <option value="">none</option>
         <option value="start">Start</option>
         <option value="end">End</option>
         <option value="center">Center</option>
-        <option value="stretch">Stretch</option>
+        <option value="stretch">Stretch (default)</option>
       </select>
 
       <label htmlFor="itemAlignSelf">align-self:</label>
@@ -221,10 +226,11 @@ export const GridItemForm = ({ items, setItems }: Props) => {
         }}
         value={itemAlignSelf}
       >
+        <option value="">none</option>
         <option value="start">Start</option>
         <option value="end">End</option>
         <option value="center">Center</option>
-        <option value="stretch">Stretch</option>
+        <option value="stretch">Stretch (default)</option>
       </select>
 
       <label htmlFor="itemContent">Item Content:</label>

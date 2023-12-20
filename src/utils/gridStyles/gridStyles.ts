@@ -3,8 +3,8 @@ export interface GridStyle {
   gridTemplateColumns?: string;
   gridTemplateRows?: string;
   gap?: string;
-  justifyItems?: string;
-  alignItems?: string;
+  justifyItems?: "start" | "end" | "center" | "stretch" | "";
+  alignItems?: "start" | "end" | "center" | "stretch" | "";
   justifyContent?: string;
   alignContent?: string;
 }
@@ -18,7 +18,7 @@ const grid1: GridStyle = {
 const grid2: GridStyle = {
   display: "grid",
   gridTemplateColumns: "1fr 2fr 3fr 1fr",
-  justifyItems: "self-end",
+  justifyItems: "start",
 };
 
 const grid3: GridStyle = {
@@ -42,8 +42,8 @@ const customGridStyles: GridStyle = {
   gridTemplateColumns: "auto",
   gridTemplateRows: "auto",
   gap: "",
-  justifyItems: "",
-  alignItems: "",
+  justifyItems: "stretch",
+  alignItems: "stretch",
   justifyContent: "",
   alignContent: "",
 };
@@ -89,8 +89,8 @@ export interface GridItemsDefault {
   gridColumnEnd: string;
   gridRowStart: string;
   gridRowEnd: string;
-  justifySelf: "start" | "end" | "center" | "stretch";
-  alignSelf: "start" | "end" | "center" | "stretch";
+  justifySelf: "start" | "end" | "center" | "stretch" | "";
+  alignSelf: "start" | "end" | "center" | "stretch" | "";
 }
 
 export const gridItemsDefault: GridItemsDefault = {
@@ -98,8 +98,8 @@ export const gridItemsDefault: GridItemsDefault = {
   gridColumnEnd: "",
   gridRowStart: "",
   gridRowEnd: "",
-  justifySelf: "stretch",
-  alignSelf: "stretch",
+  justifySelf: "",
+  alignSelf: "",
 };
 export interface InitialGridItem {
   content: string;

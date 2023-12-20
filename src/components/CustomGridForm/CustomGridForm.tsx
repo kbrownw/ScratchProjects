@@ -13,13 +13,14 @@ interface Props {
 export const CustomGridForm = ({ defaultGrids, setDefaultGrids }: Props) => {
   const [gridDisplay, setGridDisplay] = useState<GridStyle["display"]>("grid");
   const [gridCols, setGridCols] =
-    useState<GridStyle["gridTemplateColumns"]>("");
-  const [gridRows, setGridRows] = useState<GridStyle["gridTemplateRows"]>("");
+    useState<GridStyle["gridTemplateColumns"]>("auto");
+  const [gridRows, setGridRows] =
+    useState<GridStyle["gridTemplateRows"]>("auto");
   const [gridGap, setGridGap] = useState<GridStyle["gap"]>("");
   const [gridJustItems, setGridJustItems] =
-    useState<GridStyle["justifyItems"]>("");
+    useState<GridStyle["justifyItems"]>("stretch");
   const [gridAlignItems, setGridAlignItems] =
-    useState<GridStyle["alignItems"]>("");
+    useState<GridStyle["alignItems"]>("stretch");
   const [gridJustContent, setGridJustContent] =
     useState<GridStyle["justifyContent"]>("");
   const [gridAlignContent, setGridAlignContent] =
@@ -70,6 +71,7 @@ export const CustomGridForm = ({ defaultGrids, setDefaultGrids }: Props) => {
         type="text"
         id="customGridCols"
         name="customGridCols"
+        placeholder="e.g. 1fr 1fr / minmax(10px, 1fr) 3fr/ etc..."
         onChange={(e) => {
           setGridCols(e.target.value);
         }}
@@ -81,6 +83,7 @@ export const CustomGridForm = ({ defaultGrids, setDefaultGrids }: Props) => {
         type="text"
         id="customGridRows"
         name="customGridRows"
+        placeholder="min-content 1fr / 100px max-content/etc..."
         onChange={(e) => {
           setGridRows(e.target.value);
         }}
@@ -92,6 +95,7 @@ export const CustomGridForm = ({ defaultGrids, setDefaultGrids }: Props) => {
         type="text"
         id="customGridGap"
         name="customGridGap"
+        placeholder="1em / 10px 2rem/ etc..."
         onChange={(e) => {
           setGridGap(e.target.value);
         }}
@@ -103,7 +107,7 @@ export const CustomGridForm = ({ defaultGrids, setDefaultGrids }: Props) => {
         name="customGridJustifyItems"
         id="customGridJustifyItems"
         onChange={(e) => {
-          setGridJustItems(e.target.value);
+          setGridJustItems(e.target.value as GridStyle["justifyItems"]);
         }}
         value={gridJustItems}
       >
@@ -119,7 +123,7 @@ export const CustomGridForm = ({ defaultGrids, setDefaultGrids }: Props) => {
         name="customGridAlignItems"
         id="customGridAlignItems"
         onChange={(e) => {
-          setGridAlignItems(e.target.value);
+          setGridAlignItems(e.target.value as GridStyle["alignItems"]);
         }}
         value={gridAlignItems}
       >
