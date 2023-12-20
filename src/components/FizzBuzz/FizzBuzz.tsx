@@ -4,11 +4,11 @@ import { FizzBuzzResult } from "../FizzBuzzResult/FizzBuzzResult";
 import { GridButton } from "../GridButton/GridButton";
 
 export const FizzBuzz = () => {
-  const [amount, setAmount] = useState("");
-  const [fizzBuzzArr, setFizzBuzzArr] = useState([]);
+  const [amount, setAmount] = useState<number | string>("");
+  const [fizzBuzzArr, setFizzBuzzArr] = useState<Array<string | number>>([]);
 
-  const handleClick = (event) => {
-    const number = event.target.value;
+  const handleClick = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const number = Number(event.target.value);
     event.preventDefault();
     let arr = [];
     setFizzBuzzArr([]);
@@ -37,7 +37,7 @@ export const FizzBuzz = () => {
           value={amount}
           type="number"
           onChange={(e) => {
-            setAmount(e.target.value);
+            setAmount(Number(e.target.value));
           }}
           placeholder="0"
           name="amount"

@@ -2,7 +2,7 @@ import { Box } from "../Box/Box";
 import { InitialGridItem } from "../../utils/gridStyles/gridStyles";
 
 interface Props {
-  items: InitialGridItem;
+  items: InitialGridItem[];
 }
 
 export const GridItems = ({ items }: Props) => {

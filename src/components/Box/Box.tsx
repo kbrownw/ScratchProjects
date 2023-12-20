@@ -1,8 +1,9 @@
+import { GridItemsDefault } from "../../utils/gridStyles/gridStyles";
 import styles from "./box.module.css";
 
 interface Box {
   content: string;
-  style: { [key: string]: any };
+  style: GridItemsDefault;
 }
 
 export const Box = ({ content, style }: Box) => {

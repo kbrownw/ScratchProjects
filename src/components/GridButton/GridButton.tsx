@@ -2,7 +2,7 @@ import styles from "./gridbutton.module.css";
 
 interface props {
   text: string;
-  value?: string;
+  value?: string | number;
   handleClick: any;
   className?: string | null;
 }

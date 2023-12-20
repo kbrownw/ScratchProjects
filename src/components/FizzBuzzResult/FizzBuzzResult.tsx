@@ -1,8 +1,12 @@
 import styles from "./fizzbuzzresult.module.css";
 
-export const FizzBuzzResult = ({ result }) => {
-  let colNum = 1;
+interface Props {
+  result: Array<string | number>;
+}
 
+export const FizzBuzzResult = ({ result }: Props) => {
+  let colNum = 1;
+  console.log(result);
   if (result.length > 50 && result.length < 100) {
     colNum = 2;
   } else if (result.length >= 100 && result.length < 150) {
